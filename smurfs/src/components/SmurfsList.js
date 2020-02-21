@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { getSmurf, addSmurf } from '../actions/index';
+import { getSmurf, addSmurf, removeSmurf } from '../actions/index';
 
 const SmurfsList = props => {
     const [name, setName] = useState('');
@@ -26,10 +26,12 @@ const SmurfsList = props => {
 
     }
 
-    const handleSubmit = e => {
-        e.preventDefault();
+    // const handleRemove = e => {
+    //     // e.preventDefault();
+    //     // console.log(e)
+    //     props.removeSmurf(e);
 
-    }
+    // }
 
     const smurfGet = e => {
         props.getSmurf()
@@ -43,8 +45,8 @@ const SmurfsList = props => {
 
             <form onSubmit={smurfGet}>
                 <label htmlFor='name'>Smurf Name:<br/><input onChange={handleName} id='name' name='name'></input></label><br/>
-                <label htmlFor='name'>Smurf Age:<br/><input onChange={handleAge} id='name' name='name'></input></label><br/>
-                <label htmlFor='name'>Smurf Height:<br/><input onChange={handleHeight} id='name' name='name'></input></label><br/>
+                <label htmlFor='age'>Smurf Age:<br/><input onChange={handleAge} id='age' name='age'></input></label><br/>
+                <label htmlFor='height'>Smurf Height:<br/><input onChange={handleHeight} id='height' name='height'></input></label><br/>
                 <button>Add Smurf</button>
             </form>
 
@@ -52,13 +54,14 @@ const SmurfsList = props => {
 
             <button onClick={smurfGet}>View Smurfs</button>
 
-            <div>
+            <div className='smurf-container'>
             {props.smurfs.length ? props.smurfs.map(item => {
                     return (
-                        <div>
-                            <h3>Name: {item.name}</h3>
+                        <div className='smurf-bois'>
+                            <h3>{item.name}</h3>
                             <p>Age: {item.age}</p>
                             <p>Height: {item.height}</p>
+                            {/* <button onClick={() => handleRemove(item.id)}>Remove Smurf</button> */}
                         </div>
                     )
                 }) : (<div>Let's add some Smurfs!</div>)}
