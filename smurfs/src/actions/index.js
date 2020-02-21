@@ -4,6 +4,7 @@ export const FETCH_SMURF = 'FETCH_SMURF';
 export const UPDATE_SMURF = 'UPDATE_SMURF';
 export const ADD_SMURF = 'ADD_SMURF';
 export const SMURF_ERROR = 'SMURF_ERROR';
+export const DELETE_SMURF = 'DELETE_SMURF';
 
 export const getSmurf = () => dispatch => {
     dispatch({ type: FETCH_SMURF })
@@ -30,7 +31,7 @@ export const addSmurf = (name, age, height) => dispatch => {
     })
 }
 
-// export const removeSmurf = (id) => dispatch => {
-//     // dispatch({ type: FETCH_SMURF })
-//     axios.delete(`http://localhost:3333/smurfs/1`).catch(err => console.log('REMOVE error:', err))
-// }
+export const removeSmurf = (id) => dispatch => {
+    dispatch({ type: DELETE_SMURF })
+    axios.delete(`http://localhost:3333/smurfs/${id}`).catch(err => console.log('REMOVE error:', err))
+}

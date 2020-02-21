@@ -1,4 +1,4 @@
-import { FETCH_SMURF, UPDATE_SMURF } from "../actions";
+import { FETCH_SMURF, UPDATE_SMURF, DELETE_SMURF } from "../actions";
 
 
 export const initialState = {
@@ -22,6 +22,10 @@ export const smurfsReducer = (state = initialState, action) => {
                 smurfs: action.payload,
                 isFetching: false,
 
+            }
+        case DELETE_SMURF:
+            return {
+                ...state
             }
         default:
             return state;

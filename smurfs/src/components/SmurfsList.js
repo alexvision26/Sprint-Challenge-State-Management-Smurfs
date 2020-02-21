@@ -26,12 +26,12 @@ const SmurfsList = props => {
 
     }
 
-    // const handleRemove = e => {
-    //     // e.preventDefault();
-    //     // console.log(e)
-    //     props.removeSmurf(e);
+    const handleRemove = e => {
+        // e.preventDefault();
+        // console.log(e)
+        props.removeSmurf(e);
 
-    // }
+    }
 
     const smurfGet = e => {
         props.getSmurf()
@@ -61,7 +61,7 @@ const SmurfsList = props => {
                             <h3>{item.name}</h3>
                             <p>Age: {item.age}</p>
                             <p>Height: {item.height}</p>
-                            {/* <button onClick={() => handleRemove(item.id)}>Remove Smurf</button> */}
+                            <button onClick={() => handleRemove(item.id)}>Remove Smurf</button>
                         </div>
                     )
                 }) : (<div>Let's add some Smurfs!</div>)}
@@ -80,4 +80,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getSmurf, addSmurf })(SmurfsList)
+export default connect(mapStateToProps, { getSmurf, addSmurf, removeSmurf })(SmurfsList)
